@@ -12,7 +12,7 @@ import { UniverSheetsFormulaUIPlugin } from "@univerjs/sheets-formula-ui";
 import { UniverSheetsUIPlugin } from "@univerjs/sheets-ui";
 import { UniverUIPlugin } from "@univerjs/ui";
 import { UniverSheetsNumfmtPlugin } from "@univerjs/sheets-numfmt";
-
+import { FUniver } from "@univerjs/facade";
 /**
  * The ability to import locales from virtual modules and automatically import styles is provided by Univer Plugins. For more details, please refer to: https://univer.ai/guides/sheet/advanced/univer-plugins.
  * If you encounter issues while using the plugin or have difficulty understanding how to use it, please disable Univer Plugins and manually import the language packs and styles.
@@ -61,7 +61,7 @@ univer.createUnit(UniverInstanceType.UNIVER_SHEET, {
   "sheets": {
       "RSfWjJFv4opmE1JaiRj80": {
           "id": "RSfWjJFv4opmE1JaiRj80",
-          "name": "测试",
+          "name": "测试55555",
           "tabColor": "",
           "hidden": 0,
           "rowCount": 30,
@@ -145,3 +145,14 @@ univer.createUnit(UniverInstanceType.UNIVER_SHEET, {
   ]
 }
 );
+const univerAPI = FUniver.newAPI(univer);
+
+univerAPI.getSheetHooks().onCellDragOver((cell) => {
+          // 拿到当前鼠标指向的单元格
+          console.log(cell);
+})
+        
+univerAPI.getActiveWorkbook().onCellClick((cell) => {
+          // 拿到当前鼠标点击的单元格
+          console.log(cell);
+})
